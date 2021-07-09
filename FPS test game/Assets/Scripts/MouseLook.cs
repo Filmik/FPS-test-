@@ -5,24 +5,25 @@ using UnityEngine.InputSystem;
 
 public class MouseLook : MonoBehaviour
 {
-    //[SerializeField]
-    //float mouseSensitivity = 100f;
-    //[SerializeField]
-    //Transform playerBody;
-    //float mouseX;
-    //float mouseY;
-    //PlayerInput input;
-    //void Update()
-    //{
-    //    //mouseX= input.PlayerControls.MouseX.ReadValue();
-    //    //mouseY= input.PlayerControls.MouseY.ReadValue();
-    //    //mouseSensitivity * Time.deltaTime;
-    //    playerBody.Rotate(Vector3.up * mouseX);
-    //}
-
-    //public void OnLook(InputAction.CallbackContext value)
-    //{
-    //   // Vector2 mouseX = value.ReadValue<Vector2>();
-
-    //}
+    [SerializeField]
+    Camera mainCamera;
+    [SerializeField]
+    float mouseSensitivity = 100f;
+    [SerializeField]
+    float clampYMin = -90;
+    [SerializeField]
+    float clampYMax = 90;
+    float xRotation;
+    Transform playerTransform;
+    void Awake()=> playerTransform = transform;
+    
+    public void CameraMove(Vector2 mousePos)
+    {
+        float mouseX = mousePos.x * mouseSensitivity * Time.deltaTime;
+        float mouseY = mousePos.y * mouseSensitivity * Time.deltaTime;
+        xRotation -= mouseY;
+        xRotation = Mathf.Clamp(xRotation, clampYMin, clampYMax);
+        mainCamera.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        playerTransform.Rotate(Vector3.up * mouseX);
+    }
 }
