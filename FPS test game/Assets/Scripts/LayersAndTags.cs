@@ -5,6 +5,7 @@ namespace Constants
     public static class Tags
     {
         public const string player = "Player";
+        public const string target = "Target";
     }
     public static class Layers
     {
