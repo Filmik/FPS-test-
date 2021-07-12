@@ -10,13 +10,17 @@ public class PlayerController : MonoBehaviour
     MouseLook mouseLook;
     PlayerGravity playerGravity;
     SmallGun smallGun;
+    MachineGun machineGun;
+    WeaponSwitching weaponSwitching;
     void Awake()
     {
         playerMovement = GetComponent<PlayerMovement>();
         mouseLook = GetComponent<MouseLook>();
         playerGravity = GetComponent<PlayerGravity>();
         smallGun = GetComponent<SmallGun>();
-       // animationController = GetComponent<PlayerAnimationController>();
+        machineGun = GetComponent<MachineGun>(); 
+        weaponSwitching= GetComponentInChildren<WeaponSwitching>();
+        // animationController = GetComponent<PlayerAnimationController>();
     }
     public void OnMouse(InputAction.CallbackContext value)//On mouse movement
     {
@@ -39,7 +43,8 @@ public class PlayerController : MonoBehaviour
     {
         if (value.started)
         {
-             smallGun.SmallGunShoot();
+            smallGun.SmallGunShoot();
+            machineGun.MachineGunShoot();
             //animationController.playerAttack();
         }
     }
@@ -47,5 +52,9 @@ public class PlayerController : MonoBehaviour
     {
         playerGravity.Jump();
        // animationController.playerJumpUp(true);
+    }
+    public void OnChangeWeapons(InputAction.CallbackContext value)
+    {
+        weaponSwitching.ChangeToNextWeapon();
     }
 }

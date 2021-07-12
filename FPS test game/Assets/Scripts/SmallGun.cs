@@ -4,17 +4,11 @@ using UnityEngine;
 
 public class SmallGun : Guns
 {
-    [SerializeField]
-    GameObject smallGun;
-    [SerializeField]
-    ParticleSystem shotFlashParticles;
-    float nextTimeToFire = 0f;
     public void SmallGunShoot()
     {
-        if (smallGun.activeSelf&& Time.time>=nextTimeToFire)
+        if (GunRedyToFire())
         {
-            nextTimeToFire = Time.time + 1f / fireRate;
-            shotFlashParticles.Play();
+            ShootParticle();
             Shoot();
         }
     }
