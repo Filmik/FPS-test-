@@ -9,6 +9,10 @@ public class Guns : MonoBehaviour
     [SerializeField]
     ParticleSystem shotParticles;
     [SerializeField]
+    GameObject impactEffect;
+    [SerializeField]
+    float destroyImpactTime;
+    [SerializeField]
     float damage;
     [SerializeField]
     float range;
@@ -28,6 +32,8 @@ public class Guns : MonoBehaviour
         if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, range))
         {
             Debug.Log("hit object " + hit.transform.name);
+            GameObject impactObject = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+            Destroy(impactEffect, destroyImpactTime);// 
             Target target = hit.transform.GetComponent<Target>();
             if (target != null)
                 target.TakeDamage(damage);

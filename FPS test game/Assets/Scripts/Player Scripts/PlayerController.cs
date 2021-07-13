@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     PlayerGravity playerGravity;
     SmallGun smallGun;
     MachineGun machineGun;
+    GrenadeThrow grenadeThrow;
     WeaponSwitching weaponSwitching;
     void Awake()
     {
@@ -18,7 +19,8 @@ public class PlayerController : MonoBehaviour
         mouseLook = GetComponent<MouseLook>();
         playerGravity = GetComponent<PlayerGravity>();
         smallGun = GetComponent<SmallGun>();
-        machineGun = GetComponent<MachineGun>(); 
+        machineGun = GetComponent<MachineGun>();
+        grenadeThrow = GetComponent<GrenadeThrow>(); 
         weaponSwitching= GetComponentInChildren<WeaponSwitching>();
         // animationController = GetComponent<PlayerAnimationController>();
     }
@@ -45,6 +47,7 @@ public class PlayerController : MonoBehaviour
         {
             smallGun.SmallGunShoot();
             machineGun.MachineGunShoot();
+            grenadeThrow.ThrowGrenade();
             //animationController.playerAttack();
         }
     }
@@ -55,6 +58,7 @@ public class PlayerController : MonoBehaviour
     }
     public void OnChangeWeapons(InputAction.CallbackContext value)
     {
-        weaponSwitching.ChangeToNextWeapon();
+        if (value.started)
+            weaponSwitching.ChangeToNextWeapon();
     }
 }
