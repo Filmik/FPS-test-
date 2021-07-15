@@ -53,6 +53,13 @@ public class PlayerController : MonoBehaviour
             machineGun.GetTriggerState(value.ReadValueAsButton());
 
     }
+    public void OnZoom(InputAction.CallbackContext value)
+    {
+        if (value.started)
+            smallGun.SmallGunZoom(value.ReadValueAsButton());
+        if (value.canceled)
+            smallGun.SmallGunZoom(value.ReadValueAsButton());
+    }
     public void OnJump(InputAction.CallbackContext value)
     {
         playerGravity.Jump();

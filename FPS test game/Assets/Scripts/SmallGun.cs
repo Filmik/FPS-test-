@@ -11,4 +11,5 @@ public class SmallGun : Guns
             Shoot();
         }
     }
+    public void SmallGunZoom(bool buttonIsDown) =>Zoom(buttonIsDown);
 }
