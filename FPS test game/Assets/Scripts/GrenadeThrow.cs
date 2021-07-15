@@ -7,19 +7,27 @@ public class GrenadeThrow : MonoBehaviour
     [SerializeField]
     GameObject grenade;
     [SerializeField]
-    int ammo = 3;
+    int maxAmmo = 3;
+    [SerializeField]
+    int currentAmmo = 0;
     [SerializeField]
     float throwForce = 40f;
     [SerializeField]
     GameObject grenadePrefab;
-
+    [SerializeField]
+    Camera mainCamera;
+    void Awake()
+    {
+        currentAmmo = maxAmmo;
+    }
     public void ThrowGrenade()
     {
-        if (grenade.activeSelf) 
+        if (grenade.activeSelf&&currentAmmo>0) 
         {
-            Instantiate(grenadePrefab, transform.position, transform.rotation);
-            Rigidbody rb = GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * throwForce);
+            GameObject newGrenade= Instantiate(grenadePrefab, grenade.transform.position, transform.rotation);
+            Rigidbody rb = newGrenade.GetComponent<Rigidbody>();
+            rb.AddForce(mainCamera.transform.forward *throwForce);
+            currentAmmo--;
         }
     }
 }

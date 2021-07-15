@@ -17,8 +17,7 @@ public class Grenade : MonoBehaviour
     float damage = 50;
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Explode"+collision.gameObject.name);
-        if (!hasExploded)//&& layer !=player
+        if (!hasExploded && collision.gameObject.layer==Constants.Layers.ground)
             Explode();
     }
     void Explode()

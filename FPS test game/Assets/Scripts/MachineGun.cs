@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class MachineGun : Guns
 {
+    bool playerIsHoldingTrigger=false;
+    void Update()
+    {
+        if (playerIsHoldingTrigger)
+            MachineGunShoot();
+    }
     public void MachineGunShoot()
     {
         if (GunRedyToFire())
         {
-            ShootParticle();
             Shoot();
         }
     }
+    public void GetTriggerState(bool buttonIsDown) => playerIsHoldingTrigger = buttonIsDown;
 }

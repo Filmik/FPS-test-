@@ -46,10 +46,12 @@ public class PlayerController : MonoBehaviour
         if (value.started)
         {
             smallGun.SmallGunShoot();
-            machineGun.MachineGunShoot();
             grenadeThrow.ThrowGrenade();
             //animationController.playerAttack();
         }
+        if (!value.performed)
+            machineGun.GetTriggerState(value.ReadValueAsButton());
+
     }
     public void OnJump(InputAction.CallbackContext value)
     {

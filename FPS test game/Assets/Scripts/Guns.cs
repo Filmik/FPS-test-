@@ -7,6 +7,9 @@ public class Guns : MonoBehaviour
     [SerializeField]
     protected GameObject gun;
     [SerializeField]
+    AudioClip gunShot;
+    AudioSource audioSource;
+    [SerializeField]
     ParticleSystem shotParticles;
     [SerializeField]
     GameObject impactEffect;
@@ -25,9 +28,13 @@ public class Guns : MonoBehaviour
     void Awake()
     {
         mainCamera = GetComponentInChildren<Camera>();
+        audioSource = gun.GetComponent<AudioSource>();
+        audioSource.clip = gunShot;
     }
     protected void Shoot()
     {
+
+        ShootParticle();
         RaycastHit hit;
         if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, range))
         {
@@ -53,5 +60,6 @@ public class Guns : MonoBehaviour
     protected void ShootParticle()
     {
         shotParticles.Play();
+        audioSource.Play();
     }
 }
