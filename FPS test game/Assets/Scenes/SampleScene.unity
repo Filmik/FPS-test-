@@ -605,7 +605,7 @@ MonoBehaviour:
   shotParticles: {fileID: 213884986}
   impactEffect: {fileID: 7589215840191371369, guid: 3a07ebbaf70e51c4c8ecb3d7a79b8b6c,
     type: 3}
-  destroyImpactTime: 0
+  delayToDestroyImpacctEffect: 0
   damage: 10
   range: 30
   fireRate: 15
@@ -628,7 +628,7 @@ MonoBehaviour:
   shotParticles: {fileID: 572478290}
   impactEffect: {fileID: 7589215840191371369, guid: 3a07ebbaf70e51c4c8ecb3d7a79b8b6c,
     type: 3}
-  destroyImpactTime: 0
+  delayToDestroyImpacctEffect: 0
   damage: 8
   range: 70
   fireRate: 8
@@ -11123,6 +11123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedWeapon: 0
+  crosshair: {fileID: 2079707490}
 --- !u!1 &1160166163
 GameObject:
   m_ObjectHideFlags: 0

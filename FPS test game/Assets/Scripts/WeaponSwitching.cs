@@ -6,23 +6,10 @@ public class WeaponSwitching : MonoBehaviour
 {
     [SerializeField]
     int selectedWeapon = 0;
-    void Awake()
-    {
-        SelectWeapon();
-    }
-    void SelectWeapon()
-    {
-        int i = 0;
-        foreach (Transform weapon in transform)
-        {
-            if (i == selectedWeapon)
-                weapon.gameObject.SetActive(true);
-            else
-                weapon.gameObject.SetActive(false);
-            i++;
-        }
-        
-    }
+    [SerializeField]
+    GameObject crosshair; 
+    void Awake()=>SetActiveChild(selectedWeapon, transform);//select weapon
+    
     public void ChangeToNextWeapon()
     {
         int previousSelectedWeapon = selectedWeapon;
@@ -32,6 +19,22 @@ public class WeaponSwitching : MonoBehaviour
             selectedWeapon++;
 
         if (previousSelectedWeapon != selectedWeapon)
-            SelectWeapon();
+        {
+            SetActiveChild(selectedWeapon, transform);//select weapon
+            SetActiveChild(selectedWeapon, crosshair.transform);//change crosshair
+        }
     }
+    void SetActiveChild(int childNumber,Transform parent)
+    {
+        int i = 0;
+        foreach (Transform childTransform in parent)
+        {
+            if (i == childNumber)
+                childTransform.gameObject.SetActive(true);
+            else
+                childTransform.gameObject.SetActive(false);
+            i++;
+        }
+    }
+    
 }
