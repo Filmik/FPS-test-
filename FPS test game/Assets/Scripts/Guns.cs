@@ -24,14 +24,10 @@ public class Guns : MonoBehaviour
     [SerializeField]
     float impactForce;
     float nextTimeToFire = 0f;
-    Camera mainCamera;
-    float defaultFieldOfView;
-    [SerializeField]
-    float zoomPower=0;//how much gun will zoom
+    protected Camera mainCamera;
     void Awake()
     {
         mainCamera = GetComponentInChildren<Camera>();
-        defaultFieldOfView = mainCamera.fieldOfView;
         audioSource = gun.GetComponent<AudioSource>();
         audioSource.clip = gunShot;
     }
@@ -47,7 +43,7 @@ public class Guns : MonoBehaviour
             Destroy(impactEffect, delayToDestroyImpacctEffect);// 
             Target target = hit.transform.GetComponent<Target>();
             if (target != null)
-                target.TakeDamage(damage);
+                target.GunHitTarget(damage,gun.tag);
             if (hit.rigidbody != null)
                 hit.rigidbody.AddForce(-hit.normal * impactForce);
         }
@@ -65,12 +61,5 @@ public class Guns : MonoBehaviour
     {
         shotParticles.Play();
         audioSource.Play();
-    }
-    protected void Zoom(bool buttonIsDown)
-    {
-        if (buttonIsDown&&zoomPower > 0)
-            mainCamera.fieldOfView = defaultFieldOfView - zoomPower;
-        if (!buttonIsDown)
-            mainCamera.fieldOfView = defaultFieldOfView;
     }
 }

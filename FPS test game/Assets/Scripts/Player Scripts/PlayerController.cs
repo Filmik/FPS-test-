@@ -68,6 +68,9 @@ public class PlayerController : MonoBehaviour
     public void OnChangeWeapons(InputAction.CallbackContext value)
     {
         if (value.started)
+        {
+            smallGun.SmallGunZoom(false);// disable zoom before weapon change
             weaponSwitching.ChangeToNextWeapon();
+        }
     }
 }
