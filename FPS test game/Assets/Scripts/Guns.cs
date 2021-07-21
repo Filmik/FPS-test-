@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Guns : MonoBehaviour
 {
@@ -40,7 +38,7 @@ public class Guns : MonoBehaviour
         {
             Debug.Log("hit object " + hit.transform.name);
             GameObject impactObject = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-            Destroy(impactEffect, delayToDestroyImpacctEffect);// 
+            Destroy(impactObject, delayToDestroyImpacctEffect);
             Target target = hit.transform.GetComponent<Target>();
             if (target != null)
                 target.GunHitTarget(damage,gun.tag);

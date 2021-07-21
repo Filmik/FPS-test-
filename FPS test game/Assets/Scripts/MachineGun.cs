@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class MachineGun : Guns
+﻿public class MachineGun : Guns
 {
     bool playerIsHoldingTrigger=false;
     void Update()

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class WeaponSwitching : MonoBehaviour
 {
@@ -36,5 +34,4 @@ public class WeaponSwitching : MonoBehaviour
             i++;
         }
     }
-    
 }

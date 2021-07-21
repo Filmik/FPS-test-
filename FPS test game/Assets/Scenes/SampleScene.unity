@@ -680,7 +680,7 @@ MonoBehaviour:
   shotParticles: {fileID: 213884986}
   impactEffect: {fileID: 7589215840191371369, guid: 3a07ebbaf70e51c4c8ecb3d7a79b8b6c,
     type: 3}
-  delayToDestroyImpacctEffect: 0
+  delayToDestroyImpacctEffect: 1
   damage: 10
   range: 30
   fireRate: 15
@@ -703,7 +703,7 @@ MonoBehaviour:
   shotParticles: {fileID: 572478290}
   impactEffect: {fileID: 7589215840191371369, guid: 3a07ebbaf70e51c4c8ecb3d7a79b8b6c,
     type: 3}
-  delayToDestroyImpacctEffect: 0
+  delayToDestroyImpacctEffect: 1
   damage: 8
   range: 70
   fireRate: 8
@@ -1000,6 +1000,30 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 334304186}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &490131058 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1791545397671370576, guid: 2388c462e05f4fa4e8ac8274a4cbdf5e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1313148238}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &490131059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490131058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a31ad8cab7f08945a160b76559c10c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 2047158532}
+  lerpTime: 1.5
+  newPosition:
+  - {x: -10, y: 4, z: 12}
+  - {x: -7, y: 6, z: 12}
+  - {x: 6.5, y: 5, z: 12}
 --- !u!198 &572478290 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 2274915862079537765, guid: 61b1fa4097be39e47850b75ab0b99533,
@@ -1308,6 +1332,29 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 857098470}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &905065688 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 641246981868103032, guid: 0bd15b85a85da784f844ee085b8f5d3f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1385630910}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &905065689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905065688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a31ad8cab7f08945a160b76559c10c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 2047158532}
+  lerpTime: 0.4
+  newPosition:
+  - {x: -2, y: 3, z: 16}
+  - {x: 2, y: 3, z: 16}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1759,6 +1806,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Machine Gun Target (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1791545397671370578, guid: 2388c462e05f4fa4e8ac8274a4cbdf5e,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1791545397671370579, guid: 2388c462e05f4fa4e8ac8274a4cbdf5e,
         type: 3}
@@ -2576,6 +2628,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2047158533}
   - component: {fileID: 2047158534}
+  - component: {fileID: 2047158535}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -2612,6 +2665,19 @@ MonoBehaviour:
   targets: {fileID: 1785660272}
   waitBeforeRestart: 5
   summaryText: {fileID: 95321191}
+  waitForChildDestruction: 0.1
+--- !u!114 &2047158535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047158532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd402cc94aa5c464ca2c0c64ddf49240, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2079707490
 GameObject:
   m_ObjectHideFlags: 0

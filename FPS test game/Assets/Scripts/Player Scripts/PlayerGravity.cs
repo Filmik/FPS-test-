@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerGravity : MonoBehaviour
 {
-
     [SerializeField]
     float jumpForce = 2;
     Rigidbody _rigidbody;

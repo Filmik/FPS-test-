@@ -1,11 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    //PlayerAnimationController animationController;
     PlayerMovement playerMovement;
     MouseLook mouseLook;
     PlayerGravity playerGravity;
@@ -22,7 +19,6 @@ public class PlayerController : MonoBehaviour
         machineGun = GetComponent<MachineGun>();
         grenadeThrow = GetComponent<GrenadeThrow>(); 
         weaponSwitching= GetComponentInChildren<WeaponSwitching>();
-        // animationController = GetComponent<PlayerAnimationController>();
     }
     public void OnMouse(InputAction.CallbackContext value)//On mouse movement
     {
@@ -34,11 +30,6 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 inputMovement = value.ReadValue<Vector2>();
         playerMovement.GetMoveVector(inputMovement);
-        //if (runMovement != 0)
-        //    animationController.playerRun();
-        //else
-        //    animationController.playerStopRuning();
-
     }
 
     public void OnShoot(InputAction.CallbackContext value)
@@ -47,7 +38,6 @@ public class PlayerController : MonoBehaviour
         {
             smallGun.SmallGunShoot();
             grenadeThrow.ThrowGrenade();
-            //animationController.playerAttack();
         }
         if (!value.performed)
             machineGun.GetTriggerState(value.ReadValueAsButton());
@@ -63,7 +53,6 @@ public class PlayerController : MonoBehaviour
     public void OnJump(InputAction.CallbackContext value)
     {
         playerGravity.Jump();
-       // animationController.playerJumpUp(true);
     }
     public void OnChangeWeapons(InputAction.CallbackContext value)
     {
