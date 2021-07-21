@@ -19,7 +19,7 @@ public class TargetLerp : MonoBehaviour
         length = newPosition.Length;
     }
     private void Start() =>timeStartedLerping = Time.time;
-    void Update()
+    void FixedUpdate()
     {
         transform.position= lerp.Lerping(firstPos, newPosition[posIndex], timeStartedLerping, lerpTime);
         t += Time.deltaTime;
